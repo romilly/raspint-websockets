@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Joejoejoe</title>
+</head>
+<body>
+<div>cluster-001:<span id="cluster-001"></span></div>
+<div>cluster-002:<span id="cluster-002"></span></div>
+<div>cluster-003:<span id="cluster-003"></span></div>
+<div>cluster-004:<span id="cluster-004"></span></div>
+<div>raspberry-stretch:<span id="raspberry-stretch"></span></div>
+<div>posty-ssd:<span id="posty-ssd"></span></div>
+<div>posty-ssd2:<span id="posty-ssd2"></span></div>
+<div>posty-ssd3:<span id="posty-ssd3"></span></div>
+<script>
+
+
+  // setup websocket with callbacks
+  var ws = new WebSocket('ws://studyzero:8080/');
+  ws.onopen = function() {
+  };
+  ws.onclose = function() {
+  };
+  ws.onmessage = function(event) {
+      data = event.data.split(' ')
+      document.getElementById(data[0]).textContent = data[1];
+  };
+</script>
+</body>
+</html>
