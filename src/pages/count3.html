@@ -13,7 +13,7 @@
   </head>
   <body>
     <div>
-      <img src="img/Red_left-facing_rocket_ship.svg" height="320" width="480">
+      <img src="img/Red_left-facing_rocket_ship.svg" height="320" width="480" align="center">
     </div>
 
     <div id="count"></div>
@@ -21,10 +21,10 @@
     <script>
       var ws = new WebSocket('ws://sockety:8000/');
       ws.onopen = function() {
-        document.body.style.backgroundColor = '#cfc';
+        document.body.style.backgroundColor = 'blue';
       };
       ws.onclose = function() {
-        document.body.style.backgroundColor = null;
+        document.body.style.backgroundColor = 'green';
       };
       ws.onmessage = function(event) {
         document.getElementById('count').textContent = event.data;
