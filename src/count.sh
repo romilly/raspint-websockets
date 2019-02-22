@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #!/bin/bash
-for ((COUNT = 11; COUNT >= 0; COUNT--)); do
-  #DOWN=$((11-$COUNT))
+for ((COUNT = 10; COUNT >= 0; COUNT--)); do
   echo $COUNT
   sleep 1
 done
