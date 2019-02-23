@@ -5,15 +5,26 @@ from time import sleep
 from sys import stdout
 
 
+HOSTS = ['cluster-001', 'cluster-002' , 'cluster-003' , 'cluster-004',
+                     'raspberry-stretch', 'posty-ssd' , 'posty-ssd2' , 'posty-ssd3']
+
+
 def ping(name):
     response = os.system("ping -c 1 > /dev/null 2> /dev/null " + name)
     return 'UP' if response == 0 else 'DOWN'
 
+
+def status_of(name):
+    return '%20s: %s' % (name, ping(name))
+
+
 while True:
-    for hostname in ['cluster-001', 'cluster-002' , 'cluster-003' , 'cluster-004',
-                     'raspberry-stretch', 'posty-ssd' , 'posty-ssd2' , 'posty-ssd3']:
-        print(hostname, ping(hostname))
-        stdout.flush()
-    print('time',datetime.datetime.now().isoformat())
+    print('clear')
     stdout.flush()
-    sleep(1.0)
+    for name in HOSTS:
+        print(status_of(name))
+    now = datetime.datetime.now()
+    t = '\r\ntime %s' % datetime.datetime.now().strftime('%Y-%M-%d %H:%M:%S')
+    print(t)
+    stdout.flush()
+    sleep(10)

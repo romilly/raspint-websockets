@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Cluster Status</title>
+</head>
+<body>
+<h1>Pi Cluster Status</h1>
+<pre id="status"></pre>
+
+<script>
+
+
+  // setup websocket with callbacks
+  var ws = new WebSocket('ws://sockety:8000/');
+  ws.onopen = function() {
+  };
+  ws.onclose = function() {
+  };
+  ws.onmessage = function(event) {
+      data = event.data;
+      if (data == 'clear') {
+          document.getElementById('status').textContent = ''
+      } else {
+          document.getElementById('status').textContent += '\n' + event.data;
+      }
+  };
+</script>
+</body>
+</html>
