@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Joejoejoe</title>
+    <title>Pi Cluster Status</title>
 </head>
 <body>
+<h1>Pi Cluster Status</h1>
 <div>cluster-001:<span id="cluster-001"></span></div>
 <div>cluster-002:<span id="cluster-002"></span></div>
 <div>cluster-003:<span id="cluster-003"></span></div>
@@ -13,11 +14,13 @@
 <div>posty-ssd:<span id="posty-ssd"></span></div>
 <div>posty-ssd2:<span id="posty-ssd2"></span></div>
 <div>posty-ssd3:<span id="posty-ssd3"></span></div>
+<div>Time:<span id="time"></span></div>
+
 <script>
 
 
   // setup websocket with callbacks
-  var ws = new WebSocket('ws://studyzero:8080/');
+  var ws = new WebSocket('ws://sockety:8000/');
   ws.onopen = function() {
   };
   ws.onclose = function() {
