@@ -15,4 +15,5 @@ while True:
         print(hostname, ping(hostname))
         stdout.flush()
     print('time',datetime.datetime())
+    stdout.flush()
     sleep(1.0)
