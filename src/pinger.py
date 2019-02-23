@@ -14,6 +14,6 @@ while True:
                      'raspberry-stretch', 'posty-ssd' , 'posty-ssd2' , 'posty-ssd3']:
         print(hostname, ping(hostname))
         stdout.flush()
-    print('time',datetime.datetime.now())
+    print('time',datetime.datetime.now().isoformat())
     stdout.flush()
     sleep(1.0)
