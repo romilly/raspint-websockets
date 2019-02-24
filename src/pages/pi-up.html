@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Pi Cluster Status</title>
 </head>
 <body>
-<h1>Pi Cluster Status</h1>
-<div>cluster-001:<span id="cluster-001"></span></div>
-<div>cluster-002:<span id="cluster-002"></span></div>
-<div>cluster-003:<span id="cluster-003"></span></div>
-<div>cluster-004:<span id="cluster-004"></span></div>
-<div>raspberry-stretch:<span id="raspberry-stretch"></span></div>
-<div>posty-ssd:<span id="posty-ssd"></span></div>
-<div>posty-ssd2:<span id="posty-ssd2"></span></div>
-<div>posty-ssd3:<span id="posty-ssd3"></span></div>
-<div>Time:<span id="time"></span></div>
+<h1>Cluster Status</h1>
+<pre id="status"></pre>
 
 <script>
-
-
-  // setup websocket with callbacks
-  var ws = new WebSocket('ws://sockety:8000/');
-  ws.onopen = function() {
-  };
-  ws.onclose = function() {
-  };
-  ws.onmessage = function(event) {
-      data = event.data.split(' ')
-      document.getElementById(data[0]).textContent = data[1];
-  };
+    var ws = new WebSocket('ws://sockety:8000/');
+    ws.onmessage = function (event) {
+        data = event.data;
+        switch (data) {
+            case('*begin*'):
+                status = '';
+                break;
+            case('*end*'):
+                document.getElementById('status').textContent = status;
+                break;
+            default:
+                status += '\n' + data;
+        }
+    };
 </script>
+
 </body>
 </html>
