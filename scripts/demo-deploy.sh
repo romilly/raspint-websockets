@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-cd ~/git/active/raspint-websockets
-TARGET=pi@sockety.local
-ssh $TARGET 'mkdir -p socket-demo'
-rsync -azP src/ $TARGET:raspint-websockets/src
+cd ..
+TARGET_HOST=pi@sockety.local
+
+ssh $TARGET_HOST 'mkdir -p raspint-websockets'
+rsync -azP src/ $TARGET_HOST:raspint-websockets/src

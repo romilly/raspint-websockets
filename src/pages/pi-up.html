@@ -8,7 +8,7 @@
 <pre id="status"></pre>
 
 <script>
-    var ws = new WebSocket('ws://sockety:8000/');
+    var ws = new WebSocket('ws://sockety:8001/');
     ws.onmessage = function (event) {
         data = event.data;
         switch (data) {
